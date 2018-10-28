@@ -34,9 +34,14 @@
     <orderEntry type="library" name="Leiningen: medley:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.9.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.1.24" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/java.jdbc:0.5.8" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.1.143" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.12" level="project" />
+    <orderEntry type="library" name="Leiningen: ragtime/core:0.7.2" level="project" />
+    <orderEntry type="library" name="Leiningen: ragtime/jdbc:0.7.2" level="project" />
+    <orderEntry type="library" name="Leiningen: ragtime:0.7.2" level="project" />
+    <orderEntry type="library" name="Leiningen: resauce:0.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-anti-forgery:1.3.0" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-codec:1.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-core:1.6.3" level="project" />
