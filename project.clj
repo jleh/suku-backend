@@ -9,6 +9,7 @@
                  [org.clojure/data.json "0.2.6"]
                  [org.clojure/java.jdbc "0.7.8"]
                  [org.postgresql/postgresql "42.2.5"]
+		 [gedcom "0.1.1"]
                  [ragtime "0.7.2"]]
   :plugins [[lein-ring "0.12.4"]]
   :ring {:handler suku-backend.handler/app}
