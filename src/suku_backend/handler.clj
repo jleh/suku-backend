@@ -31,4 +31,5 @@
 
 (defn -main [& args]
   (db/migrate)
-  (run-jetty app {:port (Integer/valueOf (or (env "PORT") "3000"))}))
+  (run-jetty app {:port (Integer/valueOf (or (System/getenv "PORT") "3000"))
+                  :join? false}))
