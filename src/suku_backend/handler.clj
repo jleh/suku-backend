@@ -4,6 +4,7 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.json :as middleware]
             [ring.util.response :refer [response]]
+            [suku-backend.db :as db]
             [suku-backend.world-events :as world-events]
             [suku-backend.places :as places]
             [ring.util.response :as response]
@@ -21,10 +22,12 @@
            (GET "/places" [] (json-response (places/get-places)))
            (route/not-found "Not Found"))
 
-(def app (-> app-routes
-           (middleware/wrap-json-body {:keywords? true})
-           (middleware/wrap-json-response)
-           (wrap-defaults site-defaults)))
+(def app
+  (-> app-routes
+      (middleware/wrap-json-body {:keywords? true})
+      (middleware/wrap-json-response)
+      (wrap-defaults site-defaults)))
 
 (defn -main [& args]
+  (db/migrate)
   (run-jetty app {:port (Integer/valueOf (or (System/getenv "port") "3000"))}))

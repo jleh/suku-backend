@@ -10,4 +10,5 @@
   {:datastore  (jdbc/sql-database {:connection-uri (env :database-url)})
    :migrations (jdbc/load-resources "migrations")})
 
-(repl/migrate (load-config))
+(defn migrate []
+  (repl/migrate (load-config)))
