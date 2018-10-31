@@ -8,7 +8,8 @@
             [suku-backend.world-events :as world-events]
             [suku-backend.places :as places]
             [ring.util.response :as response]
-            [ring.adapter.jetty :refer [run-jetty]])
+            [ring.adapter.jetty :refer [run-jetty]]
+            [environ.core :refer [env]])
   (:gen-class))
 
 (defn json-response [data]
@@ -30,4 +31,4 @@
 
 (defn -main [& args]
   (db/migrate)
-  (run-jetty app {:port (Integer/valueOf (or (System/getenv "port") "3000"))}))
+  (run-jetty app {:port (Integer/valueOf (or (env "PORT") "3000"))}))
