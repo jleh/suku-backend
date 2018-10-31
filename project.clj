@@ -15,6 +15,7 @@
                  [environ "1.1.0"]]
   :plugins [[lein-ring "0.12.4"]]
   :ring {:handler suku-backend.handler/app}
+  :uberjar-name "suku-backend-standalone.jar"
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.2"]]}
