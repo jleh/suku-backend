@@ -4,7 +4,7 @@
 
 (require '[environ.core :refer [env]])
 
-(def db {:connection-uri (env :database-url)})
+(def db {:connection-uri (str "jdbc:" (env :database-url))})
 
 (defn load-config []
   {:datastore  (jdbc/sql-database {:connection-uri (env :database-url)})
