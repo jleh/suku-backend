@@ -1,8 +1,15 @@
-(ns user)
-
 (ns user
-  (:require [ragtime.jdbc :as jdbc]))
+  (:require [ragtime.jdbc :as jdbc]
+            [ragtime.repl :as repl]))
 
-(def config
-  {:datastore  (jdbc/sql-database {:connection-uri "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres"})
+(require '[environ.core :refer [env]])
+
+(defn load-config []
+  {:datastore  (jdbc/sql-database {:connection-uri (env :database-url)})
    :migrations (jdbc/load-resources "migrations")})
+
+(defn migrate []
+  (repl/migrate (load-config)))
+
+(defn rollback []
+  (repl/rollback (load-config)))

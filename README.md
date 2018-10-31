@@ -1,6 +1,6 @@
 # suku-backend
 
-FIXME
+Backend server for genealogy project.
 
 ## Prerequisites
 
@@ -8,11 +8,15 @@ You will need [Leiningen][] 2.0.0 or above installed.
 
 [leiningen]: https://github.com/technomancy/leiningen
 
-## Running
+## Running 
 
 Create postgres db
     
     docker run --name suku-db -d -p 5432:5432 postgres:alpine
+
+Create `.lein-env` file and add local `:database-url`
+
+Run migrations with `lein migrate`
 
 To start a web server for the application, run:
 
@@ -20,4 +24,5 @@ To start a web server for the application, run:
 
 ## License
 
-Copyright © 2018 FIXME
+MIT
+Copyright © 2018 Juuso Lehtinen
