@@ -5,9 +5,17 @@
 (defn child? [place other]
   (= (:id place) (:parent other)))
 
-(defn get-child-places [place places]
+(defn get-child-places-ids [place places]
   (map #(:id %) (filter #(child? place %) places)))
 
+(defn map-including-places-ids-to-places [places]
+  (map #(assoc % :children (get-child-places-ids % places)) places))
+
+(defn fetch-places-from-db []
+  (jdbc/query db/db ["select * from place"]))
+
+(defn get-all-places [fetch]
+  (map-including-places-ids-to-places (fetch)))
+
 (defn get-places []
-  (let [places (jdbc/query db/db ["select * from place"])]
-    (map #(assoc % :children (get-child-places % places)) places)))
+  (get-all-places fetch-places-from-db))
