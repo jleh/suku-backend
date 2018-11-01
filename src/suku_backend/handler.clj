@@ -9,8 +9,12 @@
             [suku-backend.places :as places]
             [ring.util.response :as response]
             [ring.adapter.jetty :refer [run-jetty]]
-            [environ.core :refer [env]])
+            [environ.core :refer [env]]
+            [ring.middleware.cors :refer [wrap-cors]])
   (:gen-class))
+
+(def allowed-origins [#"http://localhost:8080"
+                      #"http://karttalehtinen.fi"])
 
 (defn json-response [data]
   (-> (response/response data)
@@ -27,6 +31,8 @@
   (-> app-routes
       (middleware/wrap-json-body {:keywords? true})
       (middleware/wrap-json-response)
+      (wrap-cors :access-control-allow-origin allowed-origins
+                 :access-control-allow-methods [:get :put :post :delete])
       (wrap-defaults site-defaults)))
 
 (defn -main [& args]
