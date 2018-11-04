@@ -16,6 +16,8 @@ Create postgres db
 
 Create `.lein-env` file and add local `:database-url`
 
+    {:database-url "postgresql://localhost:5432/postgres?user=postgres&password=postgres"}
+
 Run migrations with `lein migrate`
 
 To start a web server for the application, run:

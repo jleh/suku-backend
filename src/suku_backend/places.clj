@@ -26,8 +26,16 @@
 (defn fetch-places-from-db []
   (jdbc/query db/db ["select * from place"]))
 
+(defn to-gedcom-place-id [id]
+  (format "P%04d" id))
+
+(defn transform-ids [places]
+  (map #(assoc %
+          :id (to-gedcom-place-id (:id %))
+          :parent (if (some? (:parent %)) (to-gedcom-place-id (:parent %)))) places))
+
 (defn get-all-places [fetch]
-  (map-sub-places-to-places (fetch)))
+  (map-sub-places-to-places (transform-ids (fetch))))
 
 (defn get-places []
   (get-all-places fetch-places-from-db))
