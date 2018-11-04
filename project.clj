@@ -13,7 +13,8 @@
                  [gedcom "0.1.1"]
                  [ragtime "0.7.2"]
                  [environ "1.1.0"]
-                 [ring-cors "0.1.12"]]
+                 [ring-cors "0.1.12"]
+                 [org.clojure/tools.logging "0.4.1"]]
   :plugins [[lein-ring "0.12.4"]]
   :ring {:handler suku-backend.handler/app}
   :uberjar-name "suku-backend-standalone.jar"
