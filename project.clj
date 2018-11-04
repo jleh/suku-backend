@@ -14,7 +14,11 @@
                  [ragtime "0.7.2"]
                  [environ "1.1.0"]
                  [ring-cors "0.1.12"]
-                 [org.clojure/tools.logging "0.4.1"]]
+                 [org.clojure/tools.logging "0.4.1"]
+                 [log4j/log4j "1.2.17" :exclusions [javax.mail/mail
+                                                    javax.jms/jms
+                                                    com.sun.jmdk/jmxtools
+                                                    com.sun.jmx/jmxri]]]
   :plugins [[lein-ring "0.12.4"]]
   :ring {:handler suku-backend.handler/app}
   :uberjar-name "suku-backend-standalone.jar"
